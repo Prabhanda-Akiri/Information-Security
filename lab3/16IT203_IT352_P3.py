@@ -63,9 +63,9 @@ def apply_DES(plain_text_binary,round_keys):
 
 		round_output.append(left_plain_text+right_plain_text)
 
-	ciphered_text_binary=final_permutation(round_output)
+	#ciphered_text_binary=final_permutation(round_output)
 
-	return ciphered_text_binary
+	return round_output
 
 def final_permutation(blocks):
 	Final_permutation_table=[40,  8, 48,16,56,24,64,32,
