@@ -1,7 +1,7 @@
 def generate_key():
 
 	key=get_key()  #8 char text key is obtained
-	print('\nThe key is:	',key,'\n')
+	#print('\nThe key is:	',key,'\n')
 
 	ascii_key,binary_key=get_binary_key(key) #64 bit binary key is obtained
 
