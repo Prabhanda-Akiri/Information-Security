@@ -7,10 +7,10 @@ def main():
 	input_blocks=block_formation()
 
 	plain_text_binary=binary_conversion(input_blocks)
-	print('\nplain text:\n')
+	print('\nplain text:')
 	display_text(plain_text_binary)
 
-	ciphered_text=apply_DES(plain_text_binary,round_keys)
+	ciphered_text=apply_DES(plain_text_binary,round_keys,input_blocks)
 	print('\nciphered text:\n')
 	display_text(ciphered_text)
 
@@ -36,7 +36,7 @@ def display_text(text):
 			print(chunks[j],end=' ')
 		print('')
 
-def apply_DES(plain_text_binary,round_keys):
+def apply_DES(plain_text_binary,round_keys,input_blocks):
 
 	plain_text_binary=initial_permutation(plain_text_binary)
 	#print(len(initial_permuted_blocks[0]))
@@ -44,7 +44,7 @@ def apply_DES(plain_text_binary,round_keys):
 	round_output=[]
 
 	for iter_blocks in range(len(plain_text_binary)):
-		print('\nRound outputs of Block:	',iter_blocks+1)
+		print('\nRound outputs of Block:	',iter_blocks+1,'	"',''.join(input_blocks[iter_blocks]),'"')
 		plain_text=plain_text_binary[iter_blocks]
 		left_plain_text=plain_text[:32]
 		right_plain_text=plain_text[32:]
@@ -236,8 +236,8 @@ def binary_conversion(Blocks):
 
 def convert_to_binary(x):
 
-	if x==32:
-		return [0,0,0,0,0,0,0,0]
+	'''if x==32:
+		return [0,0,0,0,0,0,0,0]'''
 
 	val=bin(x)[2:]
 	remaining=8-len(val)
@@ -257,15 +257,15 @@ def block_formation():
 	'''f=open('input.txt',"r")
 	#print(f.read())
 	plain_text=f.read()'''
-	plain_text=input('\nEnter plain text of Min-8chars and Max-40chars:\n')
-	plain_text=plain_text.replace(" ","")
+	plain_text=input('Enter plain text of Min-8chars and Max-40chars:\n')
+	#plain_text=plain_text.replace(" ","")
 
 	while(len(plain_text)<8 or len(plain_text)>40):
 		plain_text=input('\nEnter plain text of Min-8chars and Max-40chars:\n')
-		text=text.replace(" ","")
+		#text=text.replace(" ","")
 
-	plain_text=plain_text.replace("\n","")
-	print('\nText:\n',plain_text)
+	#plain_text=plain_text.replace("\n","")
+	#print('\nText:\n',plain_text)
 
 	Blocks=[]
 	length=len(plain_text)
